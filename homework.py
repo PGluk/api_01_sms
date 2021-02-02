@@ -27,14 +27,14 @@ def get_status(user_id):
 def send_sms(sms_text):
     account_sid = os.getenv("TWILIO_SID")
     account_token = os.getenv("TWILIO_AUTH_TOKEN")
-    number_from = os.getenv("NUMBER_FROM")
+    sms_sender = os.getenv("NUMBER_FROM")
     number_to = os.getenv("NUMBER_to")
 
     client = Client(account_sid, account_token)
 
     message = client.messages.create(
         body=sms_text,
-        from_=number_from,
+        from_=sms_sender,
         to=number_to,
     )
 
